@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { navigation, site } from '../data/site';
+import Icon from './Icon.astro';
+---
+<a class="skip-link" href="#main">本文へ移動する</a>
+<header class="site-header" data-header>
+  <a class="brand" href="#top" aria-label={`${site.name} トップへ`}><Image src={logo} alt={site.name} width={230} format="webp" loading="eager" /></a>
+  <nav class="header-nav" aria-label="メインナビゲーション"><a href="#about">にじいろについて</a><a href="#preschool">プリスクール</a><a href="#afterschool">学童</a><a class="header-contact" href="#visit">体験のご案内<Icon /></a></nav>
+  <button class="menu-button" type="button" aria-label="メニューを開く" aria-controls="site-menu" aria-expanded="false" data-menu-open><span></span><span></span><small>MENU</small></button>
+</header>
+<dialog id="site-menu" class="menu-dialog" aria-label="サイトメニュー" data-lenis-prevent>
+  <div class="menu-dialog__top"><Image src={logo} alt={site.name} width={210} format="webp" /><button class="menu-close" type="button" aria-label="メニューを閉じる" data-menu-close><span></span><span></span></button></div>
+  <p class="eyebrow">A little hello, a bigger world.</p>
+  <nav aria-label="すべてのページ内リンク"><ul>{navigation.map((item, i) => <li><a href={item.href}><span class="menu-number">0{i + 1}</span><span>{item.label}<small>{item.en}</small></span><Icon /></a></li>)}</ul></nav>
+  <a class="menu-instagram" href={site.instagram} target="_blank" rel="noopener noreferrer"><Icon name="instagram" /> にじいろのInstagram <Icon /></a>
+</dialog>

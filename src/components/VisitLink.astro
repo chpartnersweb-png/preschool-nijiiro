@@ -1,0 +1,6 @@
+---
+import Icon from './Icon.astro';
+interface Props { label?: string; class?: string; }
+const { label = '体験について問い合わせる', class: className = '' } = Astro.props;
+---
+<a href="#visit" class:list={['visit-link', className]}><span>{label}</span><span class="visit-link__arrow"><Icon /></span></a>

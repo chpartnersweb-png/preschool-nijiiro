@@ -1,16 +1,104 @@
 ---
----
+import { Image, getImage } from 'astro:assets';
+import Header from '../components/Header.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import VisitLink from '../components/VisitLink.astro';
+import { site, navigation, preschoolGrowth, afterschoolGrowth, teachers } from '../data/site';
+import { photos } from '../data/photos';
+import logo from '../assets/logo.png';
+import elephant from '../assets/charactor.png';
+import heroWide from '../assets/generated/hero-wide.png';
+import heroTall from '../assets/generated/hero-tall.png';
+import plane from '../assets/generated/paper-plane.png';
+import '../styles/global.css';
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+const desktopHero = await getImage({ src: heroWide, width: 1680, format: 'webp', quality: 87 });
+const mobileHero = await getImage({ src: heroTall, width: 900, format: 'webp', quality: 85 });
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff8e8" />
+    <title>{site.title}</title>
+    <meta name="description" content={site.description} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={site.title} />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:image" content="/ogp.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:image:alt" content="虹とゾウのキャラクター、プリスクール・学童 にじいろのロゴ" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800;900&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <Header />
+    <main id="main" class="page-shell">
+      <section id="top" class="hero" aria-labelledby="hero-title">
+        <picture class="hero__scene" aria-hidden="true"><source media="(max-width: 767px)" srcset={mobileHero.src} /><img src={desktopHero.src} width={1680} height={desktopHero.attributes.height} alt="" fetchpriority="high" decoding="async" /></picture>
+        <div class="hero__copy"><h1 id="hero-title"><span data-hero-line>英語が好きになる。</span><span data-hero-line>世界が<span class="hero__pink">広がる。</span></span></h1></div>
+        <Image class="hero__plane" src={plane} alt="" width={240} format="webp" aria-hidden="true" data-hero-plane />
+        <div class="hero__bottom"><VisitLink /><a class="scroll-cue" href="#about" aria-label="にじいろについて読む"><span>SCROLL TO EXPLORE</span><Icon name="down" /></a></div>
+        <span class="hero__side" aria-hidden="true">A LITTLE HELLO, A BIGGER WORLD.</span>
+      </section>
+
+      <section id="about" class="about section-pad" aria-labelledby="about-title"><div class="section-inner">
+        <SectionLabel number="01" label="Hello, Nijiiro!" />
+        <div class="about__composition">
+          <Photo src={photos.image02} alt="カラフルな教室で活動する子どもたち" class="about__photo about__photo--left" sizes="(max-width: 767px) 44vw, 26vw" />
+          <div class="about__words" data-reveal><p class="eyebrow">旭川の、プリスクール・学童</p><h2 id="about-title">「やってみたい」が、<br /><span class="marker marker--yellow">はじまり。</span></h2><p class="about__lead">遊んで、話して、やってみる。<br />毎日の中で、英語が身近になっていく。</p><p>にじいろは、英語を通して<br class="desktop-break" />人とつながる楽しさを知り、<br class="desktop-break" />新しい世界に出会う場所です。</p><p>一人ひとりの個性と、成長のペースを大切に。<br class="desktop-break" />小さな「できた！」を、一緒に重ねていきます。</p></div>
+          <Photo src={photos.image06} alt="教室でスタッフと一緒に過ごす子どもたち" class="about__photo about__photo--right" sizes="(max-width: 767px) 44vw, 25vw" />
+          <span class="doodle-star about__star" aria-hidden="true"><Icon name="spark" /></span><svg class="about__loop" viewBox="0 0 160 90" fill="none" aria-hidden="true"><path d="M8 70C40 10 110 5 102 40S30 85 52 42s79-27 99-12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 9" /></svg>
+        </div>
+        <div class="course-doors" data-reveal><a href="#preschool"><span class="course-doors__dot course-doors__dot--green"></span><span><small>遊びの中で、英語に出会う</small><strong>プリスクール</strong></span><Icon /></a><a href="#afterschool"><span class="course-doors__dot course-doors__dot--blue"></span><span><small>放課後を、もっと豊かに</small><strong>学童</strong></span><Icon /></a></div>
+      </div></section>
+
+      <section id="preschool" class="preschool section-pad" aria-labelledby="preschool-title"><div class="section-inner">
+        <SectionLabel number="02" label="Preschool" />
+        <div class="course-heading" data-reveal><p class="eyebrow">プリスクール にじいろ</p><h2 id="preschool-title">遊びの中で、<br />英語が<span class="marker marker--white">身近になる。</span></h2><span class="course-heading__word" aria-hidden="true">Let's play!</span></div>
+        <div class="preschool__spread"><div class="preschool__visual"><Photo src={photos.image04} alt="スタッフの絵本を、近くで見つめる子どもたち" class="preschool__main-photo" sizes="(max-width: 767px) 90vw, 49vw" /><Photo src={photos.image08} alt="机を囲み、それぞれの制作に取り組む教室の風景" class="preschool__small-photo" sizes="(max-width: 767px) 42vw, 23vw" /><span class="handwritten preschool__hello" aria-hidden="true">Hello!</span><span class="doodle-star preschool__star" aria-hidden="true"><Icon name="spark" /></span></div><div class="course-copy" data-reveal><h3>「覚えさせる」より、<br />「自然に触れる」を。</h3><p>小さな頃は、いろいろな音や言葉を柔軟に吸収できる大切な時期。にじいろでは、英語を中心とした保育を通して、英語の音やリズムに少しずつ親しんでいきます。</p><p>絵本を見たり、遊んだり、気持ちを伝えたり。生活の中のやりとりが、英語との出会いになります。</p><p>英語だけでなく、人と関わる力や、自分からやってみる力も大切に育てていきます。</p><VisitLink label="体験入園について" class="visit-link--outline" /></div></div>
+        <div class="growth-heading" data-reveal><span class="little-spark" aria-hidden="true">✳</span><h3>小さなやりとりから、育つもの。</h3></div>
+        <ol class="preschool-growth">{preschoolGrowth.map((item, i) => <li data-reveal><span class="growth-number">0{i + 1}</span><h4>{item.first}<br /><span>{item.next}</span></h4><p>{item.detail}</p></li>)}</ol>
+      </div></section>
+
+      <section id="afterschool" class="afterschool section-pad" aria-labelledby="afterschool-title"><div class="section-inner">
+        <SectionLabel number="03" label="After school" />
+        <div class="afterschool__intro"><div class="course-heading" data-reveal><p class="eyebrow">学童 にじいろ</p><h2 id="afterschool-title">放課後に、<br />英語と<span class="marker marker--yellow">仲良くなる。</span></h2></div><p class="afterschool__intro-copy" data-reveal>「英語って、楽しい。」<br />その気持ちが、<br />もっと話してみたいにつながる。</p></div>
+        <div class="notebook"><div class="notebook__photo-page"><Photo src={photos.image09} alt="机を囲み、教室で一緒に活動する子どもたち" class="notebook__main-photo" sizes="(max-width: 767px) 85vw, 46vw" /><span class="notebook__tape" aria-hidden="true"></span><p class="handwritten" aria-hidden="true">A little more curious.</p></div><div class="notebook__text-page" data-reveal><h3>いつもの放課後が、<br />新しい世界の入口に。</h3><p>小学生になると、自分の「好き・嫌い」がはっきりしてきます。だからこそ、英語を特別な勉強時間として切り離さず、いつもの放課後の中に。</p><p>遊び、会話、さまざまな活動を通して、英語への抵抗感をやわらげ、自分から伝えようとする気持ちを育てます。</p><VisitLink label="体験学童について" class="visit-link--outline" /></div></div>
+        <div class="afterschool__bottom"><ol class="afterschool-growth">{afterschoolGrowth.map((item, i) => <li data-reveal><span>0{i + 1}</span><div><h4>{item.first}</h4><p>{item.next}</p></div><Icon /></li>)}</ol><Photo src={photos.image03} alt="机に向かって学びに取り組む子どもたち" class="afterschool__detail-photo" sizes="(max-width: 767px) 66vw, 25vw" /></div>
+      </div></section>
+
+      <section id="days" class="days section-pad" aria-labelledby="days-title"><div class="section-inner"><SectionLabel number="04" label="Our colorful days" /><div class="days__heading" data-reveal><h2 id="days-title">にじいろの日々は、<br /><span class="marker marker--yellow">いろんな色。</span></h2><p>みんなと過ごす時間も。<br />初めてのものに出会う瞬間も。<br />一つひとつが、心に残る経験に。</p></div>
+        <div class="album"><Photo src={photos.image01} alt="並んで展示を見つめる子どもたち" class="album__photo album__photo--one" sizes="(max-width: 767px) 83vw, 44vw" /><Photo src={photos.image05} alt="色とりどりの飾りの前で過ごす子どもたち" class="album__photo album__photo--two" sizes="(max-width: 767px) 70vw, 36vw" /><Photo src={photos.image10} alt="筒状の遊具の中で過ごす子ども" class="album__photo album__photo--three" sizes="(max-width: 767px) 43vw, 22vw" /><Photo src={photos.image07} alt="ステージに並び、発表する子どもたち" class="album__photo album__photo--four" sizes="(max-width: 767px) 80vw, 47vw" /><span class="album__scribble handwritten" aria-hidden="true">Oh, what a day!</span><span class="doodle-star album__star" aria-hidden="true"><Icon name="spark" /></span></div>
+        <a class="instagram-link" href={site.instagram} target="_blank" rel="noopener noreferrer" data-reveal><span class="instagram-link__icon"><Icon name="instagram" /></span><span><small>日々の様子を、もう少し。</small><strong>にじいろのInstagram</strong></span><Icon /></a>
+      </div></section>
+
+      <section id="team" class="team section-pad" aria-labelledby="team-title"><div class="section-inner"><SectionLabel number="05" label="Meet our team" /><div class="team__heading" data-reveal><p class="eyebrow">日本人・外国人スタッフが、ともに育む。</p><h2 id="team-title">いろんな経験。<br /><span class="marker marker--pink">同じまなざし。</span></h2><p>一人ひとりの「やってみたい」に、<br />いろいろな世界を知るスタッフが寄り添います。</p></div>
+        <div class="director"><div class="director__photos"><Photo src={photos.image11} alt="スタッフと子どもたちが一緒に机を囲む、にじいろの教室" class="director__main-photo" sizes="(max-width: 767px) 88vw, 47vw" /><Photo src={photos.image13} alt="複数のスタッフが子どもたちの活動に関わる教室の風景" class="director__small-photo" sizes="(max-width: 767px) 45vw, 24vw" /><span class="handwritten director__note" aria-hidden="true">Together, we grow.</span></div><div class="director__words" data-reveal><p class="eyebrow">オーナー園長</p><h3>奥山 豊<span>アレックス</span></h3><p class="director__message">生活の中にある英語を、<br />子どもたちの毎日へ。</p><p>海外で15年間生活し、20年以上にわたり幅広い年代の方に英語を教えてきました。</p><p>実際に海外で暮らした経験を活かし、教科書だけでは学べない「生活に根ざした英語」を子どもたちに伝えています。</p></div></div>
+        <div class="teachers">{teachers.map((teacher, i) => <article class="teacher" data-reveal><span class="teacher__number">0{i + 1}</span><p class="teacher__role">{teacher.role}</p><h3>{teacher.name}</h3><p>{teacher.description}</p></article>)}</div><p class="team__volunteers" data-reveal><Icon name="spark" />外国人ボランティアの方々も加わり、<br class="mobile-break" />さまざまな人や文化に出会える環境をつくっています。</p>
+      </div></section>
+
+      <section class="care section-pad" aria-labelledby="care-title"><div class="section-inner"><SectionLabel number="06" label="What matters most" /><div class="care__layout"><div class="care__words" data-reveal><h2 id="care-title">「英語」だけではなく、<br /><span class="marker marker--yellow">「子ども」を見ています。</span></h2><p>「今日は少し元気がない」<br />「いつもより誰かと話したがっている」<br />「新しいことに挑戦してみたいようだ」</p><p>毎日変わる、気持ちや体調。<br />そんな小さな変化を見逃さず、<br />その日の一人ひとりに寄り添うことを大切にしています。</p><p>英語を学ぶことも、大切。<br />でも、それ以上に大切なのは、安心して過ごせること。</p><p class="care__last">「ここに来るのが楽しい」<br />そう思える場所で、ありたいのです。</p></div><div class="care__visual"><Photo src={photos.image12} alt="子どもの近くで、目線を合わせて活動に関わる大人" class="care__photo" sizes="(max-width: 767px) 85vw, 44vw" /><Image class="care__elephant" src={elephant} alt="" width={88} height={88} format="webp" loading="lazy" /><span class="care__caption handwritten" aria-hidden="true">Just be yourself.</span></div></div></div></section>
+
+      <section id="visit" class="visit section-pad" aria-labelledby="visit-title"><div class="section-inner"><SectionLabel number="07" label="Come say hello!" /><div class="visit__heading" data-reveal><span class="rainbow-doodle" aria-hidden="true"><i></i><i></i><i></i></span><p class="eyebrow">体験入園・体験学童のご案内</p><h2 id="visit-title">まずは、にじいろに<br /><span>会いにきてください。</span></h2><p>教室の空気、子どもたちの表情、スタッフとのやりとり。<br class="desktop-break" />実際に過ごして、感じてみてください。</p><span class="reservation-note">予約制で随時受け付けています</span></div>
+        <div class="visit__contact" data-reveal><div><p class="eyebrow">体験についてのお問い合わせ</p><a class="phone-link" href={site.phoneHref}><Icon name="phone" /><span>{site.phone}</span><Icon /></a><p class="contact-hours">受付時間 {site.hours}<span>休校日：{site.closed}</span></p></div><p class="visit__invitation">「英語を好きになってほしい」<br />「いろいろな世界を知ってほしい」<br />そんな気持ちを、お聞かせください。</p></div>
+        <div class="access" data-reveal><div class="access__brand"><Image src={logo} alt={site.name} width={360} format="webp" loading="lazy" /><p>北海道旭川市で、<br />毎日に、英語と小さな発見を。</p></div><dl class="access__details"><div><dt>所在地</dt><dd>{site.address}<br />{site.building}<a class="text-link" href={site.map} target="_blank" rel="noopener noreferrer">Google マップで見る<Icon name="pin" /></a></dd></div><div><dt>受付時間</dt><dd>{site.hours}</dd></div><div><dt>休校日</dt><dd>{site.closed}</dd></div><div><dt>教室について</dt><dd>プリスクール・学童／対面のみ</dd></div><div><dt>SNS</dt><dd><a class="text-link" href={site.instagram} target="_blank" rel="noopener noreferrer"><Icon name="instagram" />Instagram<Icon /></a></dd></div></dl></div>
+      </div></section>
+      <footer class="footer"><a href="#top" class="footer__top" aria-label="ページの先頭へ"><Icon name="down" /></a><p class="footer__hello" aria-hidden="true">See you at Nijiiro!</p><nav aria-label="フッターナビゲーション">{navigation.map(item => <a href={item.href}>{item.label}</a>)}</nav><small>© プリスクール・学童 にじいろ</small></footer>
+    </main>
+    <a class="mobile-contact is-hidden" href="#visit" data-mobile-contact><span>体験について問い合わせる</span><Icon /></a>
+    <script>
+      import { initSite } from '../scripts/site';
+      initSite();
+    </script>
+  </body>
 </html>
