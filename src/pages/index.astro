@@ -1,6 +1,7 @@
 ---
 import { Image, getImage } from 'astro:assets';
 import Header from '../components/Header.astro';
+import Seo from '../components/Seo.astro';
 import Icon from '../components/Icon.astro';
 import Photo from '../components/Photo.astro';
 import SectionLabel from '../components/SectionLabel.astro';
@@ -23,19 +24,8 @@ const mobileHero = await getImage({ src: heroTall, width: 900, format: 'webp', q
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#fff8e8" />
-    <title>{site.title}</title>
-    <meta name="description" content={site.description} />
+    <Seo />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ja_JP" />
-    <meta property="og:site_name" content={site.name} />
-    <meta property="og:title" content={site.title} />
-    <meta property="og:description" content={site.description} />
-    <meta property="og:image" content="/ogp.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="628" />
-    <meta property="og:image:alt" content="虹とゾウのキャラクター、プリスクール・学童 にじいろのロゴ" />
-    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800;900&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />

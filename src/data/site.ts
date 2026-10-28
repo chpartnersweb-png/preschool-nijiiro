@@ -1,15 +1,26 @@
+import { SITE_URL } from './site-config.mjs';
+
+const location = {
+  region: '北海道',
+  locality: '旭川市',
+  street: '3条通13丁目',
+  building: 'ヤナギヤビル1F',
+};
+
 export const site = {
+  url: SITE_URL,
   name: 'プリスクール・学童 にじいろ',
-  title: 'プリスクール・学童 にじいろ｜旭川で、英語が好きになる。世界が広がる。',
-  description: '北海道旭川市のプリスクール・学童 にじいろ。遊びや毎日の生活の中で自然に英語に触れ、一人ひとりの「やってみたい」と「できた！」を大切に育てます。体験入園・体験学童は予約制で随時受付。',
+  title: '旭川のプリスクール・英語学童｜プリスクール・学童 にじいろ',
+  description: '北海道旭川市3条通の「プリスクール・学童 にじいろ」。遊びや生活の中で自然に英語に触れ、一人ひとりの「やってみたい」を育む対面の教室です。体験入園・体験学童は予約制で随時受付。お問い合わせは0166-67-2500。',
   phone: '0166-67-2500',
   phoneHref: 'tel:0166672500',
-  address: '北海道旭川市3条通13丁目',
-  building: 'ヤナギヤビル1F',
+  location,
+  address: `${location.region}${location.locality}${location.street}`,
+  building: location.building,
   hours: '9:00〜18:00',
   closed: '土曜日・日曜日',
   instagram: 'https://www.instagram.com/hitkinder/',
-  map: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('北海道旭川市3条通13丁目 ヤナギヤビル'),
+  map: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(`${location.region}${location.locality}${location.street} ${location.building}`),
 };
 
 export const navigation = [
