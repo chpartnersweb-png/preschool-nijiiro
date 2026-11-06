@@ -219,6 +219,7 @@ p { text-wrap: pretty; }
 .teacher { border-top: 2px solid #e8b899; padding-top: 22px; }
 .teacher:nth-child(2) { margin-top: 40px; border-color: #96bb9e; }
 .teacher:nth-child(3) { margin-top: 80px; border-color: #99bece; }
+.teacher__photo { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: 50% 38%; border-radius: 8px 38px 8px 8px; margin-bottom: 24px; }
 .teacher__number { display: block; font-family: var(--rounded); font-size: 12px; margin-bottom: 20px; }
 .teacher__role { font-size: 12px; font-weight: 600; }
 .teacher h3 { margin: 10px 0 18px; font-size: 25px; }
@@ -438,7 +439,8 @@ p { text-wrap: pretty; }
   .teachers { grid-template-columns: 1fr; gap: 33px; margin-top: 45px; }
   .teacher:nth-child(2), .teacher:nth-child(3) { margin-top: 0; }
   .teacher { padding-top: 18px; display: grid; grid-template-columns: 38px 1fr; column-gap: 10px; }
-  .teacher__number { grid-row: 1 / 4; margin-top: 3px; }
+  .teacher__photo { grid-column: 1 / -1; margin-bottom: 20px; }
+  .teacher__number { grid-row: 2 / 5; margin-top: 3px; }
   .teacher__role { font-size: 12px; }
   .teacher h3 { font-size: 24px; margin-block: 7px 15px; }
   .teacher > p:last-child { font-size: 13px; }

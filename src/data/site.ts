@@ -1,4 +1,5 @@
 import { SITE_URL } from './site-config.mjs';
+import { teacherPhotos } from './photos';
 
 const location = {
   region: '北海道',
@@ -20,6 +21,7 @@ export const site = {
   hours: '9:00〜18:00',
   closed: '土曜日・日曜日',
   instagram: 'https://www.instagram.com/hitkinder/',
+  homepage: 'https://www.hitk.net/',
   map: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(`${location.region}${location.locality}${location.street} ${location.building}`),
 };
 
@@ -47,7 +49,7 @@ export const afterschoolGrowth = [
 ];
 
 export const teachers = [
-  { name: 'マミ先生', en: 'Mami', role: '日常の中に、自然な英語を。', description: '米国アラバマ大学芸術学科を卒業。子どもたちの日常生活の中に自然な英語を取り入れ、楽しいコミュニケーションをつくります。' },
-  { name: 'エミリー先生', en: 'Emilie', role: '文化を越えて、気持ちをつなぐ。', description: 'フランス出身。アメリカでの生活に加え、外国人として日本で子育てをした経験も。異なる文化や環境での経験を、子どもたちとの関わりに活かしています。' },
-  { name: 'マナ先生', en: 'Mana', role: '「作ってみたい」を、かたちに。', description: '東京で長年、保育施設に勤務。英語と製作活動のスペシャリストとして、一人ひとりの創造力と「やってみたい」という気持ちを引き出します。' },
+  { name: 'マミ先生', en: 'Mami', photo: teacherPhotos.mami, role: '日常の中に、自然な英語を。', description: '米国アラバマ大学芸術学科を卒業。子どもたちの日常生活の中に自然な英語を取り入れ、楽しいコミュニケーションをつくります。' },
+  { name: 'エミリー先生', en: 'Emilie', photo: teacherPhotos.emily, role: '文化を越えて、気持ちをつなぐ。', description: 'フランス出身。アメリカでの生活に加え、外国人として日本で子育てをした経験も。異なる文化や環境での経験を、子どもたちとの関わりに活かしています。' },
+  { name: 'マナ先生', en: 'Mana', photo: teacherPhotos.mana, role: '「作ってみたい」を、かたちに。', description: '東京で長年、保育施設に勤務。英語と製作活動のスペシャリストとして、一人ひとりの創造力と「やってみたい」という気持ちを引き出します。' },
 ];
