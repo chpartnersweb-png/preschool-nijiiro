@@ -48,6 +48,23 @@ export const afterschoolGrowth = [
   { first: '英語って楽しいと感じる', next: 'これからの学びや、未来の選択肢に。' },
 ];
 
+export const tuition = {
+  preschool: {
+    amount: '37,000',
+    note: '条件により、旭川市からの全額補助あり。詳細はお問い合わせください。',
+  },
+  afterschool: {
+    plans: [
+      { frequency: '週1', amount: '6,800' },
+      { frequency: '週2', amount: '9,300' },
+      { frequency: '週3', amount: '11,800' },
+      { frequency: '週4', amount: '14,400' },
+      { frequency: '週5', amount: '16,800' },
+    ],
+    note: '送迎についてはお問い合わせください。',
+  },
+};
+
 export const teachers = [
   { name: 'マミ先生', en: 'Mami', photo: teacherPhotos.mami, role: '日常の中に、自然な英語を。', description: '米国アラバマ大学芸術学科を卒業。子どもたちの日常生活の中に自然な英語を取り入れ、楽しいコミュニケーションをつくります。' },
   { name: 'エミリー先生', en: 'Emilie', photo: teacherPhotos.emily, role: '文化を越えて、気持ちをつなぐ。', description: 'フランス出身。アメリカでの生活に加え、外国人として日本で子育てをした経験も。異なる文化や環境での経験を、子どもたちとの関わりに活かしています。' },

@@ -6,7 +6,7 @@ import Icon from '../components/Icon.astro';
 import Photo from '../components/Photo.astro';
 import SectionLabel from '../components/SectionLabel.astro';
 import VisitLink from '../components/VisitLink.astro';
-import { site, navigation, preschoolGrowth, afterschoolGrowth, teachers } from '../data/site';
+import { site, navigation, preschoolGrowth, afterschoolGrowth, tuition, teachers } from '../data/site';
 import { photos, teacherPhotos } from '../data/photos';
 import logo from '../assets/logo.png';
 import elephant from '../assets/charactor.png';
@@ -58,6 +58,14 @@ const mobileHero = await getImage({ src: heroTall, width: 900, format: 'webp', q
         <div class="preschool__spread"><div class="preschool__visual"><Photo src={photos.image04} alt="スタッフの絵本を、近くで見つめる子どもたち" class="preschool__main-photo" sizes="(max-width: 767px) 90vw, 49vw" /><Photo src={photos.image08} alt="机を囲み、それぞれの制作に取り組む教室の風景" class="preschool__small-photo" sizes="(max-width: 767px) 42vw, 23vw" /><span class="handwritten preschool__hello" aria-hidden="true">Hello!</span><span class="doodle-star preschool__star" aria-hidden="true"><Icon name="spark" /></span></div><div class="course-copy" data-reveal><h3>「覚えさせる」より、<br />「自然に触れる」を。</h3><p>小さな頃は、いろいろな音や言葉を柔軟に吸収できる大切な時期。にじいろでは、英語を中心とした保育を通して、英語の音やリズムに少しずつ親しんでいきます。</p><p>絵本を見たり、遊んだり、気持ちを伝えたり。生活の中のやりとりが、英語との出会いになります。</p><p>英語だけでなく、人と関わる力や、自分からやってみる力も大切に育てていきます。</p><VisitLink label="体験入園について" class="visit-link--outline" /></div></div>
         <div class="growth-heading" data-reveal><span class="little-spark" aria-hidden="true">✳</span><h3>小さなやりとりから、育つもの。</h3></div>
         <ol class="preschool-growth">{preschoolGrowth.map((item, i) => <li data-reveal><span class="growth-number">0{i + 1}</span><h4>{item.first}<br /><span>{item.next}</span></h4><p>{item.detail}</p></li>)}</ol>
+        <div class="course-fees" aria-labelledby="preschool-fees-title">
+          <div class="course-fees__heading"><p class="eyebrow">プリスクールにじいろ</p><h3 id="preschool-fees-title">保育料</h3></div>
+          <div class="course-fees__body">
+            <p class="course-fees__price"><strong>{tuition.preschool.amount}</strong><span>円/月</span></p>
+            <p class="course-fees__note">{tuition.preschool.note}</p>
+            <a class="course-fees__link" href="#visit">保育料・補助についてのお問い合わせ<Icon /></a>
+          </div>
+        </div>
       </div></section>
 
       <section id="afterschool" class="afterschool section-pad" aria-labelledby="afterschool-title"><div class="section-inner">
@@ -65,6 +73,14 @@ const mobileHero = await getImage({ src: heroTall, width: 900, format: 'webp', q
         <div class="afterschool__intro"><div class="course-heading" data-reveal><p class="eyebrow">学童 にじいろ</p><h2 id="afterschool-title">放課後に、<br />英語と<span class="marker marker--yellow">仲良くなる。</span></h2></div><p class="afterschool__intro-copy" data-reveal>「英語って、楽しい。」<br />その気持ちが、<br />もっと話してみたいにつながる。</p></div>
         <div class="notebook"><div class="notebook__photo-page"><Photo src={photos.image09} alt="机を囲み、教室で一緒に活動する子どもたち" class="notebook__main-photo" sizes="(max-width: 767px) 85vw, 46vw" /><span class="notebook__tape" aria-hidden="true"></span><p class="handwritten" aria-hidden="true">A little more curious.</p></div><div class="notebook__text-page" data-reveal><h3>いつもの放課後が、<br />新しい世界の入口に。</h3><p>小学生になると、自分の「好き・嫌い」がはっきりしてきます。だからこそ、英語を特別な勉強時間として切り離さず、いつもの放課後の中に。</p><p>遊び、会話、さまざまな活動を通して、英語への抵抗感をやわらげ、自分から伝えようとする気持ちを育てます。</p><VisitLink label="体験学童について" class="visit-link--outline" /></div></div>
         <div class="afterschool__bottom"><ol class="afterschool-growth">{afterschoolGrowth.map((item, i) => <li data-reveal><span>0{i + 1}</span><div><h4>{item.first}</h4><p>{item.next}</p></div><Icon /></li>)}</ol><Photo src={photos.image03} alt="机に向かって学びに取り組む子どもたち" class="afterschool__detail-photo" sizes="(max-width: 767px) 66vw, 25vw" /></div>
+        <div class="course-fees" aria-labelledby="afterschool-fees-title">
+          <div class="course-fees__heading"><p class="eyebrow">学童にじいろ</p><h3 id="afterschool-fees-title">保育料</h3></div>
+          <div class="course-fees__body">
+            <dl class="course-fees__plans">{tuition.afterschool.plans.map((plan) => <div><dt>{plan.frequency}</dt><dd><strong>{plan.amount}</strong><span>円</span></dd></div>)}</dl>
+            <p class="course-fees__note">{tuition.afterschool.note}</p>
+            <a class="course-fees__link" href="#visit">保育料・送迎についてのお問い合わせ<Icon /></a>
+          </div>
+        </div>
       </div></section>
 
       <section id="days" class="days section-pad" aria-labelledby="days-title"><div class="section-inner"><SectionLabel number="04" label="Our colorful days" /><div class="days__heading" data-reveal><h2 id="days-title">にじいろの日々は、<br /><span class="marker marker--yellow">いろんな色。</span></h2><p>みんなと過ごす時間も。<br />初めてのものに出会う瞬間も。<br />一つひとつが、心に残る経験に。</p></div>

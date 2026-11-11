@@ -181,6 +181,23 @@ p { text-wrap: pretty; }
 .afterschool-growth li > svg { margin-left: auto; width: 16px; opacity: .5; }
 .afterschool__detail-photo { aspect-ratio: .8; border-radius: 48% 48% 4px 4px; rotate: 6deg; border: 7px solid white; }
 
+/* Tuition stays with each course, with a shared readable layout. */
+.course-fees { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-top: 65px; padding: 36px 40px; background: #fffdf6; border: 1px solid var(--line); border-radius: 24px; }
+.course-fees__heading h3 { margin-top: 8px; font-size: 26px; }
+.course-fees__body { min-width: 0; }
+.course-fees__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; line-height: 1.5; }
+.course-fees__price strong { font-family: var(--rounded); font-size: clamp(32px, 3.5vw, 44px); font-weight: 800; }
+.course-fees__price span { font-size: 16px; font-weight: 700; }
+.course-fees__plans > div { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.course-fees__plans > div:first-child { padding-top: 0; }
+.course-fees__plans dt { font-weight: 700; }
+.course-fees__plans dd { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+.course-fees__plans strong { font-family: var(--rounded); font-size: 24px; font-weight: 800; }
+.course-fees__plans dd span { font-size: 13px; }
+.course-fees__note { margin-top: 20px; font-size: 13px; line-height: 1.9; }
+.course-fees__link { display: inline-flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.course-fees__link svg { width: 15px; height: 15px; }
+
 /* A scrapbook with different scales and breathing room. */
 .days { background: #ffeddf; }
 .days__heading { display: flex; justify-content: space-between; align-items: center; gap: 50px; margin-top: 48px; }
@@ -410,6 +427,8 @@ p { text-wrap: pretty; }
   .afterschool-growth h4 { font-size: 15px; }
   .afterschool-growth p { font-size: 11px; }
   .afterschool__detail-photo { width: 64%; max-height: 310px; justify-self: center; border-width: 5px; aspect-ratio: .95; margin-top: 10px; }
+  .course-fees { grid-template-columns: 1fr; gap: 24px; margin-top: 45px; padding: 28px 22px; border-radius: 20px; }
+  .course-fees__heading h3 { margin-top: 5px; font-size: 23px; }
   .days__heading { display: block; margin-top: 35px; }
   .days__heading p { margin-top: 25px; font-size: 13px; }
   .album { grid-template-columns: repeat(6, 1fr); grid-template-rows: auto auto auto; gap: 25px 10px; margin-top: 45px; padding-bottom: 50px; }
